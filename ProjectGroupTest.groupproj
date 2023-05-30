@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{27F34962-B466-4EAE-A07A-034EE19AB643}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Test.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Operations\tIncreaseTheDate.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Operations\SquareRootExtraction.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestRegistration.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Test">
+        <MSBuild Projects="Test.dproj"/>
+    </Target>
+    <Target Name="Test:Clean">
+        <MSBuild Projects="Test.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Test:Make">
+        <MSBuild Projects="Test.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="tIncreaseTheDate">
+        <MSBuild Projects="Operations\tIncreaseTheDate.dproj"/>
+    </Target>
+    <Target Name="tIncreaseTheDate:Clean">
+        <MSBuild Projects="Operations\tIncreaseTheDate.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="tIncreaseTheDate:Make">
+        <MSBuild Projects="Operations\tIncreaseTheDate.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SquareRootExtraction">
+        <MSBuild Projects="Operations\SquareRootExtraction.dproj"/>
+    </Target>
+    <Target Name="SquareRootExtraction:Clean">
+        <MSBuild Projects="Operations\SquareRootExtraction.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SquareRootExtraction:Make">
+        <MSBuild Projects="Operations\SquareRootExtraction.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestRegistration">
+        <MSBuild Projects="TestRegistration.dproj"/>
+    </Target>
+    <Target Name="TestRegistration:Clean">
+        <MSBuild Projects="TestRegistration.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestRegistration:Make">
+        <MSBuild Projects="TestRegistration.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Test;tIncreaseTheDate;SquareRootExtraction;TestRegistration"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Test:Clean;tIncreaseTheDate:Clean;SquareRootExtraction:Clean;TestRegistration:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Test:Make;tIncreaseTheDate:Make;SquareRootExtraction:Make;TestRegistration:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
